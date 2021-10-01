@@ -159,6 +159,7 @@ import java.util.ArrayList;
 		consulta = ler.nextLine();
 		
 		for(Cliente c : clientes) {
+			
 			if(consulta.equalsIgnoreCase(c.getNome())) {
 				System.out.println("Achei o " + c.getNome() + "\nO endereço dele é: " + c.getEndereco() + "\nO telefone dele é: " + c.getNumero());
 				
@@ -363,4 +364,9 @@ import java.util.ArrayList;
 		ler.nextLine();	
 	}
 	}
+	
+
+	
+	
+	
 
