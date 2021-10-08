@@ -5,7 +5,10 @@ import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
 
-
+/**
+ * Package sistemapastel(view), Tela informativa sobre as bebidas, mostrado a lista de bebidas e a opcao de add na lista ou refresh 
+ * @author Iago Cabral e Pedro Henrique
+ */
 public class CRUDBebida implements ActionListener, ListSelectionListener {
     
     private JFrame janela;
@@ -15,11 +18,16 @@ public class CRUDBebida implements ActionListener, ListSelectionListener {
     private static ControleDados dados;
     private JList<String> listaBebidasCadastrados;
     private String[] listaNomes = new String[50];
-    
-    
+     
+    /**
+     * criando a lista de bebidas e criando tambem um JList
+     * criando os elementos da interface CRUD bebidas e as mostrando
+     * adicionando ActionListened para os botoes
+     * @param d controle de dados
+     * @param op opçao 1
+     */
     public void mostrarDados(ControleDados d, int op){
-        dados = d;
-        
+        dados = d;       
         switch (op) {
         case 1:
             listaNomes = new ControleBebida(dados).getNomeBebida(); 
@@ -61,7 +69,10 @@ public class CRUDBebida implements ActionListener, ListSelectionListener {
 
     }
     
-    
+    /**
+	 * Função que captura os eventos relacionados aos botões da interface
+	 * direciona e cria uma interface, de acordo com a opção selecionada
+	 */
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         
@@ -77,6 +88,9 @@ public class CRUDBebida implements ActionListener, ListSelectionListener {
         	listaBebidasCadastrados.updateUI();
         }
     }
+    /**
+     * Função para editar e ajustar a Jlist
+     */
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
 

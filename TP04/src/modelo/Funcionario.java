@@ -1,5 +1,11 @@
 package modelo;
 
+/** 
+ * Classe Funcionario, com todos os dados necessarios de um funcionario
+ * @author iago cabral
+ *
+ */
+
 public class Funcionario {
 
 	private String nomeFuncionario; 
@@ -12,6 +18,19 @@ public class Funcionario {
 	private String funcao; 
 	private double salario; 
 
+	/** 
+	 * Construtor de funcionario
+	 * public funcionarios com os seguinte paramentros: 
+	 * @param nf nome do funcionario
+	 * @param id identidade do funcionario
+	 * @param cpf cpf do fuincionario
+	 * @param nascimento data de nascimento do funcionario 
+	 * @param endereco endereço do funcionario
+	 * @param telefone telefone do funcionario
+	 * @param horario  carga de trabalho
+	 * @param ocupacao função ocupada na empresa
+	 * @param salarioFun salario pago ao funcionario
+	 */
 	public Funcionario(String nf, int id, String cpf, String nascimento, String endereco, int telefone, String horario, String ocupacao, double salarioFun) {
 		
 		nomeFuncionario = nf; 
@@ -23,8 +42,8 @@ public class Funcionario {
 		timeTrab = horario; 
 		funcao = ocupacao; 
 		salario = salarioFun;  
-		
-		
+	
+	
 	}
 
 	public String getNomeFuncionario() {

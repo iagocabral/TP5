@@ -1,9 +1,25 @@
 package modelo;
 
+/** 
+ * Classe Pastel, com todos os dados necesarrios de um pastel
+ * @author Iago Cabral e Pedro Henrique
+ *
+ */
+
 public class Pastel extends Produto {
 	
-	private String recheio;
+	private String recheio; 
 	private String cozinheiro; 
+	
+	/** 
+	 * Construtor de Pastel
+	 * public Pastel, com os seguintes parametros(dados)
+	 * @param np nome do pastel
+	 * @param vp valor do pastel
+	 * @param tp tamanho do pastel
+	 * @param recheioPastel recheio do pastel
+	 * @param funcionarioCozinha funcionario que o fez
+	 */
 
 	public Pastel(String np, int vp, String tp, String recheioPastel, String funcionarioCozinha) {
 		super(np, vp, tp);

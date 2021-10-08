@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controle.*;
 
+/**
+ * Package sistemapastel(view), Tela para Adicionar os dados em JtextFields 
+ * Tela para coletar os dados do pedido
+ * @author Iago Cabral e Pedro Henrique
+ */
 public class TelaDetalhePedido implements ActionListener {
 
 	private JFrame janela;
@@ -38,7 +43,16 @@ public class TelaDetalhePedido implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-
+	/**
+	 * Menu que cria a interface de acordo com a op
+	 * op 1 = tela de cadastro
+	 * op 3 = tela de detalhe
+	 * adicionando a actionlistener aos botões
+	 * @param op opção para saber se vai cadastrar ou editar
+	 * @param d  controle de dados
+	 * @param p  interface CRUD para pedido
+	 * @param pos index da lista
+	 */
 	public void inserirEditar(int op, ControleDados d, CRUDPedido p, int pos) {
 
 		opcao = op;
@@ -136,7 +150,12 @@ public class TelaDetalhePedido implements ActionListener {
 		botaoExcluir.addActionListener(this);
 	}
 
-
+	/**
+	 * Função que captura os eventos relacionados aos botões da interface
+	 * Adiciona um pedido a lista caso seja add
+	 * atualiza os dados desejados caso a opção seja edit
+	 * direciona e cria uma interface, de acordo com a opção selecionada
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == botaoSalvar) {
@@ -172,6 +191,15 @@ public class TelaDetalhePedido implements ActionListener {
 					
 				}
 				
+				if (novoDado[1].isEmpty() ) res = false;
+				if (novoDado[2].isEmpty() ) res = false;
+				if (novoDado[3].isEmpty() ) res = false;
+				if (novoDado[4].isEmpty() ) res = false;
+				if (novoDado[5].isEmpty() ) res = false;
+				if (novoDado[6].isEmpty() ) res = false;
+				if (novoDado[7].isEmpty() ) res = false;
+				if (novoDado[8].isEmpty() ) res = false;
+				if (novoDado[9].isEmpty() ) res = false;
 				if(res == true) {
 					mensagemSucessoCadastro();
 				}
@@ -196,18 +224,28 @@ public class TelaDetalhePedido implements ActionListener {
 		}
 	}
 
+	/*
+	 * Função que cria um JPane, com mensagem de sucesso na exclusão
+	 */
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 
+	/*
+	 * Função que cria um JPane, com mensagem de sucesso no cadastro
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 
+	/*
+	 * Função que cria um JPane, com mensagem de erro no cadastro
+	 * Erros provavelments atribuidos a falta de preenchimento ou entrando uma Variavel incompativel ao Jtextfild
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"

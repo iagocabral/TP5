@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controle.*;
 
+/**
+ * Package sistemapastel(view), Tela para Adicionar os dados em JtextFields 
+ * Tela para coletar os dados da venda
+ * @author Iago Cabral e Pedro Henrique
+ */
 public class TelaDetalheVenda implements ActionListener {
 
 	private JFrame janela;
@@ -27,6 +32,16 @@ public class TelaDetalheVenda implements ActionListener {
 	private int opcao;
 	private String s;
 
+	/**
+	 * Menu que cria a interface de acordo com a op
+	 * op 1 = tela de cadastro
+	 * op 3 = tela de detalhe
+	 * adicionando a actionlistener aos botões
+	 * @param op opção para saber se vai cadastrar ou editar
+	 * @param d  controle de dados
+	 * @param p  interface CRUD para venda
+	 * @param pos index da lista
+	 */
 	public void inserirEditar(int op, ControleDados d, CRUDVenda p, int pos) {
 
 		opcao = op;
@@ -88,7 +103,12 @@ public class TelaDetalheVenda implements ActionListener {
 		botaoExcluir.addActionListener(this);
 	}
 
-
+	/**
+	 * Função que captura os eventos relacionados aos botões da interface
+	 * Adiciona uma venda a lista caso seja add
+	 * atualiza os dados desejados caso a opção seja edit
+	 * direciona e cria uma interface, de acordo com a opção selecionada
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == botaoSalvar) {
@@ -116,6 +136,9 @@ public class TelaDetalheVenda implements ActionListener {
 					res = dados.inserirEditarVenda(novoDado);
 					
 				}
+				if (novoDado[1].isEmpty() ) res = false;
+				if (novoDado[2].isEmpty() ) res = false;
+				if (novoDado[3].isEmpty() ) res = false;
 				
 				if(res == true) {
 					mensagemSucessoCadastro();
@@ -133,6 +156,7 @@ public class TelaDetalheVenda implements ActionListener {
 
 			if (opcao == 3) {
 				res = dados.removerVenda(posicao);
+				
 				if (res) mensagemSucessoExclusao(); 
 	 
 			}
@@ -140,20 +164,30 @@ public class TelaDetalheVenda implements ActionListener {
 	
 		}
 	}
-
+	/**
+	 * Função que cria um JPane, com mensagem de sucesso na exclusão
+	 */
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 
+	/**
+	 * Função que cria um JPane, com mensagem de sucesso no cadastro
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 
+	/**
+	 * Função que cria um JPane, com mensagem de erro no cadastro
+	 * Erros provavelments atribuidos a falta de preenchimento ou entrando uma Variavel incompativel ao Jtextfild
+	 */
 	public void mensagemErroCadastro() {
+		
 		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"

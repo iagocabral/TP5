@@ -9,7 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controle.*;
-
+/**
+ * Package sistemapastel(view), Tela para Adicionar os dados em JtextFields 
+ * Tela para coletar os dados da bebida
+ * @author Iago Cabral e Pedro Henrique
+ */
 public class TelaDetalheBebida implements ActionListener {
 
 	private JFrame janela;
@@ -31,6 +35,16 @@ public class TelaDetalheBebida implements ActionListener {
 	private int opcao;
 	private String s;
 
+	/**
+	 * Menu que cria a interface de acordo com a op
+	 * op 1 = tela de cadastro
+	 * op 3 = tela de detalhe
+	 * adicionando a actionlistener aos botões
+	 * @param op opção para saber se vai cadastrar ou editar
+	 * @param d  controle de dados
+	 * @param p  interface CRUD para bebida
+	 * @param pos index da lista
+	 */
 	public void inserirEditar(int op, ControleDados d, CRUDBebida p, int pos) {
 
 		opcao = op;
@@ -108,7 +122,12 @@ public class TelaDetalheBebida implements ActionListener {
 		botaoExcluir.addActionListener(this);
 	}
 
-
+	/**
+	 * Função que captura os eventos relacionados aos botões da interface
+	 * Adiciona uma bebida a lista caso seja add
+	 * atualiza os dados desejados caso a opção seja edit
+	 * direciona e cria uma interface, de acordo com a opção selecionada
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == botaoSalvar) {
@@ -125,7 +144,8 @@ public class TelaDetalheBebida implements ActionListener {
 				novoDado[3] =  valorTipo.getText(); // string [3] = string, tipo bebida
 				novoDado[4] =  valorSabor.getText(); //string [4] = string, sabor bebida
 				novoDado[5] =  valorValor.getText(); //preço da bebida
-
+				
+				
 				if (opcao == 1 || opcao == 3) {
 					novoDado[2] =  valorTam.getText();
 					res = dados.inserirEditarBebida(novoDado);
@@ -136,6 +156,11 @@ public class TelaDetalheBebida implements ActionListener {
 					
 				}
 				
+				if (novoDado[1].isEmpty() ) res = false;
+				if (novoDado[2].isEmpty() ) res = false;
+				if (novoDado[3].isEmpty() ) res = false;
+				if (novoDado[4].isEmpty() ) res = false;
+				if (novoDado[5].isEmpty() ) res = false;
 				if(res == true) {
 					mensagemSucessoCadastro();
 				}
@@ -159,19 +184,27 @@ public class TelaDetalheBebida implements ActionListener {
 	
 		}
 	}
-
+	
+	/**
+	 * Função que cria um JPane, com mensagem de sucesso na exclusão
+	 */
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Função que cria um JPane, com mensagem de sucesso no cadastro
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Função que cria um JPane, com mensagem de erro no cadastro
+	 * Erros provavelments atribuidos a falta de preenchimento ou entrando uma Variavel incompativel ao Jtextfild
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"

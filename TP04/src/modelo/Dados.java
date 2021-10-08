@@ -2,15 +2,17 @@ package modelo;
 import java.util.*;
 
 
+/** 
+ *  Classe dados, relacionando as Classes Modelo e criando Arrays para Cada tipo de classe relevante
+ * @author Iago Cabral e Pedro Henrique
+ * versão 1.0(Outubro 2021)
+ */
 
+public class Dados { 
 
-
-
-
-
-
-public class Dados {
-    
+	/** 
+	 * Criação dos Arrays das classes relevantes 
+	 */
     private Pastel[] pasteis = new Pastel[50];
     private int qntPastel = 0;
     private Bebida[] bebidas = new Bebida[50];
@@ -22,6 +24,10 @@ public class Dados {
     private Venda[] vendas = new Venda[50];
     private int qntVenda = 0;
     
+    /** 
+     * procedimento dataBase
+     * criando um banco de dados para os arrays.
+     */
 	public void fillWithSomeData() {
 		
 		pasteis[0] = new Pastel("pastel de carne", 6, "a4","carne", "Messi"); 
@@ -70,12 +76,25 @@ public class Dados {
 	}
 	
 	//PASTEL
+	/**
+	 * 
+	 * @return pasteis
+	 */
     public Pastel[] getPasteis() {
         return pasteis;
     }
+    /**
+     * 
+     * @param pasteis array pasteis
+     */
     public void setPasteis(Pastel[] pasteis) {
         this.pasteis = pasteis;
     }
+    /**
+     * Função criada para Inserir ou editar um pastel na lista 
+     * @param a dado do tipo Pastel que deseja inserir ou editar
+     * @param pos	posição na lista
+     */
     public void inserirEditarPastel(Pastel a, int pos) {
         this.pasteis[pos] = a; 
         if(pos == qntPastel) qntPastel++; 
@@ -92,6 +111,11 @@ public class Dados {
     public void setBebidas(Bebida[] bebidas) {
         this.bebidas = bebidas;
     }
+    /**
+     * Função criada para Inserir ou editar uma bebida na lista 
+     * @param a dado do tipo Bebida que deseja inserir ou editar
+     * @param pos posição na lista
+     */
     public void inserirEditarBebida(Bebida a, int pos) {
         this.bebidas[pos] = a; 
         if(pos == qntBebida) qntBebida++; 
@@ -104,6 +128,11 @@ public class Dados {
     public void setFuncionarios(Funcionario[] funcionarios) {
         this.funcionarios = funcionarios;
     }
+    /**
+     * Função criada para Inserir ou editar um funcionario na lista 
+     * @param a dado do tipo Funcionario que deseja inserir ou editar
+     * @param pos posição na lista
+     */
     public void inserirEditarFuncionario(Funcionario a, int pos) {
         this.funcionarios[pos] = a; 
         if(pos == qntFuncionario) qntFuncionario++; 
@@ -116,6 +145,12 @@ public class Dados {
     public void setPedidos(Pedido[] pedidos) {
         this.pedidos = pedidos;
     }
+    
+    /**
+     * Função criada para Inserir ou editar um pedido na lista 
+     * @param a dado do tipo Pedido que deseja inserir ou editar
+     * @param pos posição na lista
+     */
     public void inserirEditarPedido(Pedido a, int pos) {
         this.pedidos[pos] = a; 
         if(pos == qntPedido) qntPedido++; 
@@ -128,6 +163,12 @@ public class Dados {
     public void setVendas(Venda[] vendas) {
         this.vendas = vendas;
     }
+    
+    /**
+     * Função criada para Inserir ou editar uma venda na lista 
+     * @param a dado do tipo Venda que deseja inserir ou editar
+     * @param pos posição na lista
+     */
     public void inserirEditarVenda(Venda a, int pos) {
         this.vendas[pos] = a; 
         if(pos == qntVenda) qntVenda++; 
@@ -172,7 +213,4 @@ public class Dados {
     public void setQntVenda(int qntVenda) {
         this.qntVenda = qntVenda;
     }
-
-    
-
 }

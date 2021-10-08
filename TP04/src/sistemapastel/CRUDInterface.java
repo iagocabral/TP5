@@ -5,7 +5,11 @@ import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
 
-
+/**
+ * Classe que cria a interface CRUD para a opção pastel
+ * Package sistemapastel(view), Tela informativa sobre os pasteis, mostrado a lista de pasteis e a opcao de add na lista ou refresh 
+ * @author Iago Cabral e Pedro Henrique
+ */
 public class CRUDInterface implements ActionListener, ListSelectionListener {
     
     private JFrame janela;
@@ -16,7 +20,13 @@ public class CRUDInterface implements ActionListener, ListSelectionListener {
     private JList<String> listaPasteisCadastrados;
     private String[] listaNomes = new String[50];
     
-    
+    /**
+     * criando a lista de Pastel e criando tambem um JList
+     * criando os elementos da interface CRUD pastel e as mostrando
+     * adicionando ActionListened para os botoes
+     * @param d dados 	
+     * @param op 1 opcao
+     */
     public void mostrarDados(ControleDados d, int op){
         dados = d;
         
@@ -61,7 +71,10 @@ public class CRUDInterface implements ActionListener, ListSelectionListener {
 
     }
     
-    //Captura eventos relacionados aos botões da interface
+    /**
+	 * Função que captura os eventos relacionados aos botões da interface
+	 * direciona e cria uma interface, de acordo com a opção selecionada
+	 */
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         
@@ -77,6 +90,9 @@ public class CRUDInterface implements ActionListener, ListSelectionListener {
             listaPasteisCadastrados.updateUI();
         }
     }
+    /**
+     * Função para editar e ajustar a Jlist
+     */
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
 

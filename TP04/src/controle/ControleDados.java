@@ -1,71 +1,132 @@
 package controle;
 import modelo.*;
+/**
+ * Package Controle, package responsavel por fazer a ligacao entro o package modelo e o package sistemapastel(view)
+ * Classe Controle de Dados, responsavel pelo controle de Dados de todas as outras classes do package controle
+ * @author Iago Cabral e Pedro Henrique
+ *
+ */
 
 public class ControleDados {
     private Dados d = new Dados();
-    
+    /** 
+     * chamando o banco de dados
+     */
     public ControleDados() {
     	d.fillWithSomeData();
-    }
+    } 
     
+    /**
+     * Função para retornar dados
+     * @return d dados
+     */
     public Dados getDados() {
         return d;
     }
+    
+    /**
+     * Função para settar dados
+     * @param d dados
+     */
     public void setDados(Dados d) {
         this.d = d;
     }
     
-    //PASTEIS
+    /**
+     * Função para retornar os dados de Pastel
+     * @return this.d.getPasteis() this
+     */
     public Pastel[] getPaslteis() {
         return this.d.getPasteis();
     }
     
-
+/**
+ * Função para retornar a quantidade de pasteis
+ * @return this.d.getQntPastel() this
+ */
     public int getQntPastel() {
         return this.d.getQntPastel();
     }
     
+    /**
+     *  Função para retornar os dados das vendas
+     * @return this.d.getVendas() this
+     */
     public Venda[] getVenda() {
         return this.d.getVendas();
     }
    
     
-    //BEBIDAS
+    /**
+     * Função para retornar os dados das bebidas
+     * @return this.d.getBebidas() this
+     */
     public Bebida[] getBebidas() {
         return this.d.getBebidas();
     }
-
+    
+    /**
+     * Função para retornar a quantidade de bebidas
+     * @return this.d.getQntBebida() this
+     */
     public int getQntBebida() {
         return this.d.getQntBebida();
     }
     
-    //FUNCIONARIOS
+    /**
+     * Função para retornar os dados de funcionario
+     * @return this.d.getFuncionarios() this
+     */
     public Funcionario[] getFuncionarios() {
         return this.d.getFuncionarios();
     }
     
+    /**
+     * Função para retornar a quantidade de funcionarios
+     * @return this.d.getQntFuncionario() this
+     */
     public int getQntFuncionarios() {
         return this.d.getQntFuncionario();
     }
     
+    /**
+     *  Função para retornar os dados dos pedidos
+     * @return this.d.getPedidos()
+     */
     public Pedido[] getPedidos() {
         return this.d.getPedidos();
     }
 
+    /**
+     * Função para retornar a quantidade de vedidos
+     * @return this.d.getQntPedido()
+     */
     public int getQntPedidos() {
         return this.d.getQntPedido();
     }
     
+    /**
+     * Função para retornar a quantidade de vendas
+     * @return this.d.getQntVenda()
+     */
     public int getQntVendas() {
         return this.d.getQntVenda();
     }
     
-    
-    
-    
-
+    /**
+     * Função booleana feita para editar dados do pastel na lista ou para adicionar um pastel na lista
+     * @param dadosPastel String contendo os dados do pastel a ser inserido ou editado na lista
+     * @return true, caso conseguiu inserir/editar o pastel ou False caso tenha algum erro nos dados passado como parametro
+     */
     public boolean inserirEditarPastel(String[] dadosPastel) {
     	
+    	if (dadosPastel[1].isEmpty() ) return false;
+		if (dadosPastel[2].isEmpty() ) return false;
+		if (dadosPastel[3].isEmpty() ) return false;
+		if (dadosPastel[4].isEmpty() ) return false;
+		if (dadosPastel[5].isEmpty() ) return false;
+	
+		
         if(!dadosPastel[5].matches("[0-9]+")) // entrar se nao for inteiro
         		{
 
@@ -78,9 +139,20 @@ public class ControleDados {
                 return true;
         }
     }
-    
+   
+    /**
+     * Função booleana feita para editar dados da bebida na lista ou para adicionar uma bebida na lista
+     * @param dadosBebida String contendo os dados da bebida a ser inserido ou editado na lista
+     * @return true, caso conseguiu inserir/editar a bebida ou False caso tenha algum erro nos dados passado como parametro
+     */
    public boolean inserirEditarBebida(String[] dadosBebida) {
-    	
+	   
+	   	if (dadosBebida[1].isEmpty() ) return false;
+		if (dadosBebida[2].isEmpty() ) return false;
+		if (dadosBebida[3].isEmpty() ) return false;
+		if (dadosBebida[4].isEmpty() ) return false;
+		if (dadosBebida[5].isEmpty() ) return false;
+	   
         if(!dadosBebida[5].matches("[0-9]+")) // entrar se nao for inteiro
         		{
 
@@ -94,9 +166,25 @@ public class ControleDados {
         }
     }
    
+   /**
+    * Função booleana feita para editar dados do funcionario na lista ou para adicionar um funcionario na lista
+    * @param dadosFuncionario String contendo os dados do funcionario a ser inserido ou editado na lista
+    * @return true, caso conseguiu inserir/editar o funcionario ou False caso tenha algum erro nos dados passado como parametro
+    */
    public boolean inserirEditarFuncionario(String[] dadosFuncionario) {
-   	
-	   if(!dadosFuncionario[5].matches("[0-9]+") || !dadosFuncionario[6].matches("[0-9]+") || !dadosFuncionario[9].matches("[0-9]+")) // entrar se nao for inteiro
+   		
+	   	if (dadosFuncionario[1].isEmpty() ) return false;
+		if (dadosFuncionario[2].isEmpty() ) return false;
+		if (dadosFuncionario[3].isEmpty() ) return false;
+		if (dadosFuncionario[4].isEmpty() ) return false;
+		if (dadosFuncionario[5].isEmpty() ) return false;
+		if (dadosFuncionario[6].isEmpty() ) return false;
+		if (dadosFuncionario[7].isEmpty() ) return false;
+		if (dadosFuncionario[8].isEmpty() ) return false;
+		if (dadosFuncionario[9].isEmpty() ) return false;
+		
+	   
+ 	   if(!dadosFuncionario[5].matches("[0-9]+") || !dadosFuncionario[6].matches("[0-9]+") || !dadosFuncionario[9].matches("[0-9]+")) // entrar se nao for inteiro
        		{
            return false;
            
@@ -109,7 +197,17 @@ public class ControleDados {
        }
    }
    
+   /**
+    * Função booleana feita para editar dados da venda na lista ou para adicionar uma venda na lista
+    * @param dadosVenda String contendo os dados da venda a ser inserido ou editado na lista
+    * @return true, caso conseguiu inserir/editar a venda ou False caso tenha algum erro nos dados passado como parametro
+    */
    public boolean inserirEditarVenda(String[] dadosVenda) {
+	   
+	   	if (dadosVenda[1].isEmpty() ) return false;
+		if (dadosVenda[2].isEmpty() ) return false;
+		if (dadosVenda[3].isEmpty() ) return false;
+		
 	   	
 	   if(!dadosVenda[1].matches("[0-9]+") || !dadosVenda[3].matches("[0-9]+") ) // entrar se nao for inteiro
        		{
@@ -125,7 +223,11 @@ public class ControleDados {
    }
    
   
-    
+   /**
+    * Função para remover um pastel da lista de pasteis
+    * @param i  o paramentro é um inteiro i, indice do pastel que deseja remover da lista
+    * @return true, caso a remoção foi um sucesso ou false, caso tenha ocorrido algum erro na remoção
+    */
 	public boolean removerPastel(int i) {
 		int qtdPastel = d.getQntPastel();
 		String pastelRemovido = d.getPasteis()[i].getNomeProduto();
@@ -151,6 +253,11 @@ public class ControleDados {
 		}
 	}
 	
+	/**
+	 * Função para remover uma bebida da lista de bebida
+	 * @param i  o paramentro é um inteiro i, indice da bebida que deseja remover da lista
+	 * @return true, caso a remoção foi um sucesso ou false, caso tenha ocorrido algum erro na remoção
+	 */
 	public boolean removerBebida(int i) {
 		int qtdBebida = d.getQntBebida();
 		String bebidaRemovido = d.getBebidas()[i].getNomeProduto();
@@ -176,6 +283,11 @@ public class ControleDados {
 		}
 	}
 	
+	/**
+	 * Função para remover um funcionario da lista de funcionario
+	 * @param i  o paramentro é um inteiro i, indice do funcionario que deseja remover da lista
+	 * @return true, caso a remoção foi um sucesso ou false, caso tenha ocorrido algum erro na remoção
+	 */
 	public boolean removerFuncionario(int i) {
 		int qtdFuncionario = d.getQntFuncionario();
 		String funcionarioRemovido = d.getFuncionarios()[i].getNomeFuncionario();
@@ -200,8 +312,23 @@ public class ControleDados {
 			return true;
 		}
 	}
-	
+
+	/**
+	 * Função booleana feita para editar dados de um  pedido na lista ou para adicionar uma pedido na lista
+	 * @param dadosPedido String contendo os dados do pedido a ser inserido ou editado na lista
+     * @return true, caso conseguiu inserir/editar o pedido ou False caso tenha algum erro nos dados passado como parametro
+     */
 public boolean inserirEditarPedido(String[] dadosPedido) {
+		
+		if (dadosPedido[1].isEmpty() ) return false;
+		if (dadosPedido[2].isEmpty() ) return false;
+		if (dadosPedido[3].isEmpty() ) return false;
+		if (dadosPedido[4].isEmpty() ) return false;
+		if (dadosPedido[5].isEmpty() ) return false;
+		if (dadosPedido[6].isEmpty() ) return false;
+		if (dadosPedido[7].isEmpty() ) return false;
+		if (dadosPedido[8].isEmpty() ) return false;
+		if (dadosPedido[9].isEmpty() ) return false;
 		
 		if(!dadosPedido[3].matches("[0-9]+") || !dadosPedido[5].matches("[0-9]+") || !dadosPedido[6].matches("[0-9]+") || !dadosPedido[8].matches("[0-9]+")) // 
 		{
@@ -213,6 +340,13 @@ public boolean inserirEditarPedido(String[] dadosPedido) {
         return true;
 }
 }
+
+
+	/**
+	 * Função para remover um pedido da lista de pedidos
+	 * @param i  o paramentro é um inteiro i, indice do pedido que deseja remover da lista
+	 * @return true, caso a remoção foi um sucesso ou false, caso tenha ocorrido algum erro na remoção
+	 */
 	public boolean removerPedidos(int i) {
 		int qntPedidos = d.getQntPedido();
 		String pedidoRemovido = d.getPedidos()[i].getNomeCliente();
@@ -238,6 +372,11 @@ public boolean inserirEditarPedido(String[] dadosPedido) {
 		}
 	}
 	
+	/**
+	 * Função para remover uma venda da lista de vendas
+	 * @param i  o paramentro é um inteiro i, indice da venda que deseja remover da lista
+	 * @return true, caso a remoção foi um sucesso ou false, caso tenha ocorrido algum erro na remoção
+	 */	
 	public boolean removerVenda(int i) {
 		int qntVenda = d.getQntVenda();
 		String VendaRemovido = d.getVenda()[i].getNomeCliente();
